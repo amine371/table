@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import propstypes from 
+import PropTypes from 'prop-types';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const productable= [
-  {nom:"aminee",cartégorie: "azerti",prix:"200"};
-  {nom:"amineee",cartégorie: "azertu",prix:"300"};
-  {nom:"amine",cartégorie: "azerty",prix:"400"};
-  {nom:"moahmed",cartégorie: "aaa",prix:"800"};
-  {nom:"ahmed",cartégorie: "bbb",prix:"200"};
-  {nom:"anas",cartégorie: "ccc",prix:"600"};
+  {name:"amineeee",category: "azertuy",price:"3000"},
+  {name:"amineee",category: "azertu",price:"300"},
+  {name:"amine",category: "azerty",price:"400"},
+  {name:"moahmed",category: "aaa",price:"800"},
+  {name:"ahmed",category: "bbb",price:"200"},
+  {name:"anas",category: "ccc",price:"600"},
 ];
-const productable= (props)=>{
+const ProductTable = (props)=>{
   const table=props.objet;
   const productsMap =table.carte(produit)=>{
     return(
       <tr style={{fondstyle:"italic",fontSize:20,textAlign:"center"}}>
-        <td style={{backgroundcolor:"black",width:400}}>{props.nom}</td>
-        <td style={{backgroundcolor:"yellow",width:300}}>{props.cartégorie}</td>
-        <td style={{backgroundcolor:"red",width:300}}>{props.produit}</td>
+        <td style={{backgroundcolor:"black",width:400}}>{props.name}</td>
+        <td style={{backgroundcolor:"yellow",width:300}}>{props.category}</td>
+        <td style={{backgroundcolor:"red",width:300}}>{props.price}</td>
         </tr>
     );
   });
@@ -29,8 +29,8 @@ const productable= (props)=>{
       <table style ={{paddingLeft:"25%"}}>
         <tr style ={{backgroundcolor:"red"}}>
           <th>name</th>
-          <th>cartégorie</th>
-          <th>prix</th>
+          <th>category</th>
+          <th>price</th>
         </tr>
         {productsMap}
       </table>
@@ -38,10 +38,10 @@ const productable= (props)=>{
   );
 }
 Productrow . propTypes  =  {
-  produits : PropTypes . tableau ,
-  nom : PropTypes . chaîne ,
-  prix : PropTypes . chaîne ,
-  catégorie : PropTypes . oneOf ( [ "name" ,  "homme" ] )
+  products : PropTypes .array ,
+  name : PropTypes .string ,
+  price : PropTypes .string ,
+ category : PropTypes . oneOf ( ["name" ,"homme" ] )
 } ;
 
 
