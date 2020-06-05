@@ -10,7 +10,7 @@ const ProductTable =props => {
   const productsArray = props.products;
   const productsItems = productsArray.map((item) =>
    
-    <ProductRow {...item} />
+    <ProductRow {.item} />
     
   );
 
