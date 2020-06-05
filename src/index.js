@@ -4,51 +4,82 @@ import PropTypes from 'prop-types';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const productable= [
-  {name:"amineeee",category: "azertuy",price:"3000"},
-  {name:"amineee",category: "azertu",price:"300"},
-  {name:"amine",category: "azerty",price:"400"},
-  {name:"moahmed",category: "aaa",price:"800"},
-  {name:"ahmed",category: "bbb",price:"200"},
-  {name:"anas",category: "ccc",price:"600"},
-];
-const ProductTable = (props)=>{
-  const table=props.objet;
-  const productsMap =table.carte(produit)=>{
-    return(
-      <tr style={{fondstyle:"italic",fontSize:20,textAlign:"center"}}>
-        <td style={{backgroundcolor:"black",width:400}}>{props.name}</td>
-        <td style={{backgroundcolor:"yellow",width:300}}>{props.category}</td>
-        <td style={{backgroundcolor:"red",width:300}}>{props.price}</td>
-        </tr>
-    );
-  });
-  return(
-    <di>
-      <h2 style ={{textAlign:"center",fontSize:50}}></h2>
-      <table style ={{paddingLeft:"25%"}}>
-        <tr style ={{backgroundcolor:"red"}}>
-          <th>name</th>
-          <th>category</th>
-          <th>price</th>
-        </tr>
-        {productsMap}
-      </table>
-    </di>
+
+
+const ProductTable =props => {
+  const productsArray = props.products;
+  const productsItems = productsArray.map((item) =>
+   
+    <ProductRow {...item} />
+    
+  );
+
+  return (
+  <table style={{margin:"50px auto", width: "80%",border:"1px solid #ccc" }}>
+    <thead style={{ backgroundColor: "#f1f1f1", textTransform:"uppercase"}}>
+      <th style={{padding:10}}>Product</th>
+      <th>Price</th>
+      <th>Category</th>
+    </thead>
+    <tbody style={{ textAlign: "center"}}>
+    {productsItems}
+    </tbody>
+  </table>
   );
 }
-Productrow . propTypes  =  {
-  products : PropTypes .array ,
-  name : PropTypes .string ,
-  price : PropTypes .string ,
- category : PropTypes . oneOf ( ["name" ,"homme" ] )
-} ;
+
+
+
+const ProductRow = props => {
+  return (
+    <tr>
+    <td style={{padding:10}}>{props.name}</td>
+    <td>{props.price}</td>
+    <td>{props.category}</td>
+    </tr>
+
+  );
+};
+
+ProductRow.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.string,
+  category : PropTypes.string,
+};
+
+
+const products = [
+  {
+      name: 'tlf',
+      price: '30$',
+      category : 'Electronics'
+  },
+
+  {
+    name: 'maryole',
+    price: '15$',
+    category : 'Electronics'
+  },
+
+  {
+      name: 'Tshirt',
+      price: '35$',
+      category : 'Clothes'
+  },
+
+  {
+    name: 'sbedri',
+    price: '450$',
+    category : 'Clothes'
+},
+
+];
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ProductTable products={products} />
   </React.StrictMode>,
   document.getElementById('root')
 );
